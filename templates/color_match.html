@@ -1,0 +1,50 @@
+<!-- templates/color_match.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Matcher</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Find the Best Color Match</h1>
+        <form id="colorForm" method="post">
+            <label for="color">Enter a color name:</label>
+            <input type="text" id="color" name="color" required>
+            <button type="submit">Find Match</button>
+        </form>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        document.getElementById('colorForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const color = document.getElementById('color').value.trim(); // Remove extra spaces
+
+            fetch('/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({ color })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.best_match.startsWith('Error:')) {
+                    document.getElementById('result').innerText = data.best_match;
+                } else if (data.best_match === 'Color not found in dataset') {
+                    document.getElementById('result').innerText = 'Color not found in dataset. Please try another color.';
+                } else {
+                    document.getElementById('result').innerText = `Best match color is: ${data.best_match}`;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerText = 'An error occurred. Please try again.';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+/* static/style.css */
+
+/* Apply a background gradient with blue and pink hues */
+body {
+    background: linear-gradient(135deg, #ff99cc, #66b2ff);
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Center the content within the body */
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the heading */
+h1 {
+    font-size: 2.5rem;
+    color: #444;
+    margin-bottom: 20px;
+    font-family: 'Verdana', sans-serif;
+}
+
+/* Style for the form and input field */
+form {
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+label {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #66b2ff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3399ff;
+}
+
+/* Style for the result paragraph */
+#result {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #444;
+}
